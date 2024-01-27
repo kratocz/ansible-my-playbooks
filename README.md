@@ -21,7 +21,7 @@ ansible-playbook ubuntu-server.yml
 ```
 
 ## Example output
-I executed command `ansible-playbook ubuntu-server.yml` on one of my servers when for the playbook file ubuntu-server.yml in this revision: [ubuntu-server.yml@5551642](https://github.com/kratocz/ansible-my-playbooks/blob/5551642efbddca70ba4647083d9cdc52389173b3/ubuntu-server.yml)
+I executed the command `ansible-playbook ubuntu-server.yml` on one of my servers when for the playbook file `ubuntu-server.yml` in this revision: [ubuntu-server.yml@5551642](https://github.com/kratocz/ansible-my-playbooks/blob/5551642efbddca70ba4647083d9cdc52389173b3/ubuntu-server.yml)
 
 ```
 web6:~/ansible-my-playbooks # ansible-playbook ubuntu-server.yml
