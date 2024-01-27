@@ -1,6 +1,9 @@
 # ansible-my-playbooks
 The Ansible playbooks I use for my servers. You can get inspired.
 
+Clone this repository and see the usage below or just get inspired from my playbook(s):
+- [ubuntu-server.yml](ubuntu-server.yml)
+
 ## Usage
 1. Install `ansible`
 2. Clone this repository
