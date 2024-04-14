@@ -1,10 +1,14 @@
 # ansible-my-playbooks
-The Ansible playbooks I use for my servers. You can get inspired.
+The Ansible playbooks I use for my Linux servers and desktops. You can get inspired.
 
 Tip: Also ChatGPT can create or adjust a playbook for you very well.
 
 Clone this repository and see the usage below or just get inspired from my playbook(s):
 - [ubuntu-server.yml](roles/common/tasks/packages-debian.yml)
+
+## Supported OS
+- Debian based Linuxes
+- SUSE based Linuxes (including openSUSE)
 
 ## Usage
 1. Install `ansible`
