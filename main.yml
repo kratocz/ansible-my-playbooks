@@ -3,6 +3,7 @@
   roles:
     - role: common
       become: yes
+
 - hosts: desktops
   gather_facts: True
   roles:
