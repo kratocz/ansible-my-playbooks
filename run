@@ -1,0 +1,3 @@
+#!/bin/sh
+which ansible-playbook >/dev/null || apt-get install ansible || zypper install ansible
+ansible-playbook main.yml
