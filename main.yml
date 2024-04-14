@@ -1,0 +1,6 @@
+---
+- hosts: desktops
+  gather_facts: True
+  roles:
+    - role: common
+      become: yes

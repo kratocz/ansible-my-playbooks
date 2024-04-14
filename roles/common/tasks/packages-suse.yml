@@ -1,0 +1,37 @@
+- name: Remove repository "https://download.opensuse.org/repositories/SUSE:/{{ item }}:/GA/pool/"
+  when: ansible_facts['os_family']|lower == 'suse'
+  zypper_repository:
+    state: absent
+    repo: "https://download.opensuse.org/repositories/SUSE:/{{ item }}:/GA/pool/"
+  loop:
+    - SLE-15-SP1
+    - SLE-15-SP2
+    - SLE-15-SP3
+    - SLE-15-SP4
+    - SLE-15-SP5
+- name: Remove repository "https://download.opensuse.org/repositories/SUSE:/{{ item }}:/GA/toberemoved/"
+  when: ansible_facts['os_family']|lower == 'suse'
+  zypper_repository:
+    state: absent
+    repo: "https://download.opensuse.org/repositories/SUSE:/{{ item }}:/GA/toberemoved/"
+  loop:
+    - SLE-15-SP1
+    - SLE-15-SP2
+    - SLE-15-SP3
+    - SLE-15-SP4
+    - SLE-15-SP5
+
+- stat:
+    path: /etc/zypp/repos.d/filesystems.repo
+  register: repo_file
+
+- name: Add repository "filesystems"
+  when: not repo_file.stat.exists
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/filesystems/{{ ansible_facts['lsb']['release'] }}/filesystems.repo"
+
+- name: "Install required packages"
+  zypper:
+    state: present
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard-tools']

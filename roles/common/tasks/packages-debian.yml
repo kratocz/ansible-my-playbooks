@@ -1,0 +1,8 @@
+- name: "Update apt package cache"
+  apt:
+    update_cache: yes
+
+- name: "Install required packages"
+  apt:
+    state: present
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard']

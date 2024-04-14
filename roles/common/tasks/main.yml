@@ -1,0 +1,13 @@
+#- name: Debug info
+#  import_tasks: debug_info.yml
+
+- name: Install must have OS packages for 'suse' based OS
+  when: ansible_facts['os_family']|lower == 'suse'
+  import_tasks: packages-suse.yml
+
+- name: Install must have OS packages for 'debian' based OS
+  when: ansible_facts['os_family']|lower == 'debian'
+  import_tasks: packages-debian.yml
+
+- name: Clone .tmux and add some plugins and configurations
+  import_tasks: tmux.yml

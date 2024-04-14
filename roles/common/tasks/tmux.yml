@@ -1,0 +1,34 @@
+- name: Clone .tmux repository if not exists
+  command: git clone https://github.com/gpakosz/.tmux.git
+  args:
+    creates: /root/.tmux
+    chdir: /root
+  become_user: root
+  become_method: sudo
+
+- name: Set tmux.conf symlink if not exists
+  file:
+    src: ".tmux/.tmux.conf"
+    dest: "/root/.tmux.conf"
+    state: link
+  become_user: root
+  become_method: sudo
+
+- name: Create /root/.tmux.conf.local if not exists
+  command: cp .tmux/.tmux.conf.local .
+  args:
+    creates: /root/.tmux.conf.local
+    chdir: /root
+  become_user: root
+  become_method: sudo
+
+
+- name: Configure .tmux.conf.local
+  lineinfile:
+    path: /root/.tmux.conf.local
+    line: "{{ item }}"
+    insertafter: EOF
+  with_items:
+    - 'set -g @plugin ''kratocz/tmux-screen'''
+    - 'set -g @plugin ''kratocz/tmux-kratocz'''
+    - 'set -g base-index 0'
