@@ -1,4 +1,11 @@
 ---
+- hosts: servers
+  gather_facts: True
+  roles:
+    - role: common
+      become: yes
+
+---
 - hosts: desktops
   gather_facts: True
   roles:
