@@ -29,7 +29,7 @@
   when: not repo_file.stat.exists
   zypper_repository:
     state: present
-    repo: "https://download.opensuse.org/repositories/filesystems/{{ ansible_facts['lsb']['release'] }}/filesystems.repo"
+    repo: "https://download.opensuse.org/repositories/filesystems/{{ ansible_facts['distribution_version'] }}/filesystems.repo"
 
 - name: "Install required packages"
   zypper:
