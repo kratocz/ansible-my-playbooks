@@ -3,17 +3,13 @@ The Ansible playbooks I use for my Linux servers and desktops. You can get inspi
 
 Tip: Also ChatGPT can create or adjust a playbook for you very well.
 
-Clone this repository and see the usage below or just get inspired from my playbook(s):
-- [ubuntu-server.yml](roles/common/tasks/packages-debian.yml)
-
 ## Supported OS
 - Debian based Linuxes
 - SUSE based Linuxes (including openSUSE)
 
 ## Usage
 1. Install `ansible`
-2. Clone this repository
-3. Add your target hosts to the file `/etc/ansible/hosts` (alternatively you can use `inventory.ini` file in any directory, see the [Ansible documentation](https://docs.ansible.com/ansible/latest/getting_started/get_started_inventory.html)), e.g. add lines:
+2. Add your target hosts to the file `/etc/ansible/hosts` (alternatively you can use `inventory.ini` file in any directory, see the [Ansible documentation](https://docs.ansible.com/ansible/latest/getting_started/get_started_inventory.html)), e.g. add lines:
 ```
 [servers]
 web1.example.com
@@ -24,6 +20,7 @@ For localhost desktop:
 [desktops]
 127.0.0.1 ansible_connection=local
 ```
+3. Clone this repository
 4. In the cloned repository directory execute:
 ```
 sudo ansible-playbook main.yml
