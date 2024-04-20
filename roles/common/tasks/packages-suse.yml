@@ -34,4 +34,4 @@
 - name: "Install required packages"
   zypper:
     state: present
-    name: ['ansible', 'mc', 'vim', 'tmux', 'docker', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard-tools']
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard-tools', 'mosh']
