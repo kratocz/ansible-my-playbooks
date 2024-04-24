@@ -31,7 +31,23 @@
     state: present
     repo: "https://download.opensuse.org/repositories/filesystems/{{ ansible_facts['distribution_version'] }}/filesystems.repo"
 
+- name: Add repository "home:txutxifel (snapd, ...)"
+  when: >
+    not repo_file.stat.exists
+    and ansible_facts['distribution_version'] in ['15.5', '15.6']
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/home:txutxifel/{{ ansible_facts['distribution_version'] }}/home:txutxifel.repo"
+
 - name: "Install required packages"
   zypper:
     state: present
     name: ['ansible', 'mc', 'vim', 'tmux', 'docker', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard-tools', 'mosh', 'links']
+
+- name: "Install required packages on openSUSE 15.5 and 15.6"
+  when: >
+    ansible_facts['distribution_version'] in ['15.5', '15.6']
+  zypper:
+    state: present
+    name: ['snapd']
+
