@@ -8,3 +8,6 @@
 - name: Install must have OS packages for 'debian' based desktop OS
   when: ansible_facts['os_family']|lower == 'debian'
   import_tasks: packages-debian.yml
+
+- name: Install desktop flatpak packages
+  import_tasks: packages-flatpak.yml
