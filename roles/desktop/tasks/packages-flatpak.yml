@@ -7,4 +7,5 @@
     - { package: "org.jdownloader.JDownloader" }
     - { package: "com.slack.Slack" }
     - { package: "org.signal.Signal" }
+    - { package: "org.telegram.desktop" }
 
