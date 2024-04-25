@@ -28,5 +28,5 @@
 - name: "Install required packages"
   zypper:
     state: present
-    name: ['krusader']
+    name: ['krusader', 'hugin']
 
