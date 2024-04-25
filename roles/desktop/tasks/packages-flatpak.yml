@@ -6,4 +6,5 @@
     - { package: "io.dbeaver.DBeaverCommunity" }
     - { package: "org.jdownloader.JDownloader" }
     - { package: "com.slack.Slack" }
+    - { package: "org.signal.Signal" }
 
