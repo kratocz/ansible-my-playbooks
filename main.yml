@@ -9,3 +9,5 @@
   roles:
     - role: common
       become: yes
+    - role: desktop
+      become: yes

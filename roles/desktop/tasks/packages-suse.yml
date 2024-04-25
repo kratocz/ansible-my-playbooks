@@ -1,0 +1,8 @@
+- name: Import repo keys and refresh
+  command: zypper --gpg-auto-import-keys refresh
+
+- name: "Install required packages"
+  zypper:
+    state: present
+    name: ['krusader']
+
