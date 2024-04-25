@@ -43,6 +43,19 @@
     state: present
     repo: "https://download.opensuse.org/repositories/home:txutxifel/{{ ansible_facts['distribution_version'] }}/home:txutxifel.repo"
 
+
+- stat:
+    path: /etc/zypp/repos.d/home_inescid_grid.repo
+  register: repo_home_inescid_grid
+
+- name: Add repository "home:inescid:grid (new version of ansible)"
+  when: >
+    not repo_home_inescid_grid.stat.exists
+    and ansible_facts['distribution_version'] in ['15.5', '15.6']
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/home:inescid:grid/{{ ansible_facts['distribution_version'] }}/home:inescid:grid.repo"
+
 - name: Import repo keys and refresh
   command: zypper --gpg-auto-import-keys refresh
 
