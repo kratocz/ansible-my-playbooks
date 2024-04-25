@@ -1,8 +1,32 @@
+- stat:
+    path: /etc/zypp/repos.d/home_Dead_Mozay.repo
+  register: repo_home_Dead_Mozay
+
+- name: Add repository "home:Dead_Mozay"
+  when: >
+    not repo_home_Dead_Mozay.stat.exists
+    and ansible_facts['distribution_version'] in ['15.5', '15.6']
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/home:txutxifel/{{ ansible_facts['distribution_version'] }}/home:Dead_Mozay.repo"
+
+- stat:
+    path: /etc/zypp/repos.d/home_ecsos.repo
+  register: repo_home_ecsos
+
+- name: Add repository "home:ecsos"
+  when: >
+    not repo_home_ecsos.stat.exists
+    and ansible_facts['distribution_version'] in ['15.5', '15.6']
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/home:txutxifel/{{ ansible_facts['distribution_version'] }}/home:ecsos.repo"
+
 - name: Import repo keys and refresh
   command: zypper --gpg-auto-import-keys refresh
 
 - name: "Install required packages"
   zypper:
     state: present
-    name: ['krusader']
+    name: ['krusader', 'dbeaver']
 
