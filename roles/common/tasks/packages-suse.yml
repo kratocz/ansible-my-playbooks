@@ -62,7 +62,7 @@
 - name: "Install required packages"
   zypper:
     state: present
-    name: ['ansible', 'mc', 'vim', 'tmux', 'docker', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard-tools', 'mosh', 'links', 'iotop', 'sysstat']
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard-tools', 'mosh', 'links', 'iotop', 'sysstat', 'openfortivpn']
 
 - name: "Install required packages on openSUSE 15.5 and 15.6"
   when: >
