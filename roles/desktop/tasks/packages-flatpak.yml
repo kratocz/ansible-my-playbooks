@@ -1,10 +1,9 @@
-- name: Install the flatpak io.dbeaver.DBeaverCommunity
+- name: Install Flatpak applications
   community.general.flatpak:
-    name: io.dbeaver.DBeaverCommunity
+    name: "{{ item.package }}"
     state: present
-
-- name: Install the flatpak org.jdownloader.JDownloader
-  community.general.flatpak:
-    name: org.jdownloader.JDownloader
-    state: present
+  loop:
+    - { package: "io.dbeaver.DBeaverCommunity" }
+    - { package: "org.jdownloader.JDownloader" }
+    - { package: "com.slack.Slack" }
 
