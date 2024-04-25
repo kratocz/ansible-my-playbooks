@@ -8,7 +8,7 @@
     and ansible_facts['distribution_version'] in ['15.5', '15.6']
   zypper_repository:
     state: present
-    repo: "https://download.opensuse.org/repositories/home:txutxifel/{{ ansible_facts['distribution_version'] }}/home:Dead_Mozay.repo"
+    repo: "https://download.opensuse.org/repositories/home:Dead_Mozay/{{ ansible_facts['distribution_version'] }}/home:Dead_Mozay.repo"
 
 - stat:
     path: /etc/zypp/repos.d/home_ecsos.repo
@@ -20,7 +20,7 @@
     and ansible_facts['distribution_version'] in ['15.5', '15.6']
   zypper_repository:
     state: present
-    repo: "https://download.opensuse.org/repositories/home:txutxifel/{{ ansible_facts['distribution_version'] }}/home:ecsos.repo"
+    repo: "https://download.opensuse.org/repositories/home:ecsos/{{ ansible_facts['distribution_version'] }}/home:ecsos.repo"
 
 - name: Import repo keys and refresh
   command: zypper --gpg-auto-import-keys refresh
