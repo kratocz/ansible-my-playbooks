@@ -22,11 +22,22 @@
     state: present
     repo: "https://download.opensuse.org/repositories/home:ecsos/{{ ansible_facts['distribution_version'] }}/home:ecsos.repo"
 
+- stat:
+    path: /etc/zypp/repos.d/home_jirislaby_kotatko.repo
+  register: repo_home_jirislaby_kotatko
+
+- name: Add repository "home:jirislaby:kotatko"
+  when: >
+    not repo_home_jirislaby_kotatko.stat.exists
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/home:jirislaby:kotatko/{{ ansible_facts['distribution_version'] }}/home:jirislaby:kotatko.repo"
+
 - name: Import repo keys and refresh
   command: zypper --gpg-auto-import-keys refresh
 
 - name: "Install required packages"
   zypper:
     state: present
-    name: ['krusader', 'hugin']
+    name: ['krusader', 'hugin', 'datovka']
 
