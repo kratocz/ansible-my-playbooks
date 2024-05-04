@@ -47,7 +47,7 @@
     path: /etc/zypp/repos.d/home_regataos.repo
   register: repo_home_regataos
 
-- name: Add repository "home:regataos (MANY OS packages like qemu, ...)"
+- name: Add repository "home:regataos (MANY OS packages)"
   when: >
     not repo_home_regataos.stat.exists
     and ansible_facts['distribution_version'] in ['15.4', '15.5']
