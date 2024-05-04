@@ -43,6 +43,18 @@
     state: present
     repo: "https://download.opensuse.org/repositories/home:inescid:grid/{{ ansible_facts['distribution_version'] }}/home:inescid:grid.repo"
 
+- stat:
+    path: /etc/zypp/repos.d/home_regataos.repo
+  register: repo_home_regataos
+
+- name: Add repository "home:regataos (MANY OS packages like qemu, ...)"
+  when: >
+    not repo_home_regataos.stat.exists
+    and ansible_facts['distribution_version'] in ['15.4', '15.5']
+  zypper_repository:
+    state: present
+    repo: "https://download.opensuse.org/repositories/home:regataos/{{ ansible_facts['distribution_version'] }}/home:regataos.repo"
+
 - name: Import repo keys and refresh
   command: zypper --gpg-auto-import-keys refresh
 
