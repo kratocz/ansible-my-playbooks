@@ -8,7 +8,7 @@
     and ansible_facts['distribution_version'] in ['15.5', '15.6']
   zypper_repository:
     state: present
-    repo: "https://download.opensuse.org/repositories/home:Dead_Mozay/{{ ansible_facts['distribution_version'] }}/home:Dead_Mozay.repo"
+    repo: "https://download.opensuse.org/repositories/home:Dead_Mozay/${releasever}/home:Dead_Mozay.repo"
 
 - stat:
     path: /etc/zypp/repos.d/home_ecsos.repo
@@ -20,7 +20,7 @@
     and ansible_facts['distribution_version'] in ['15.5', '15.6']
   zypper_repository:
     state: present
-    repo: "https://download.opensuse.org/repositories/home:ecsos/{{ ansible_facts['distribution_version'] }}/home:ecsos.repo"
+    repo: "https://download.opensuse.org/repositories/home:ecsos/${releasever}/home:ecsos.repo"
 
 - stat:
     path: /etc/zypp/repos.d/home_jirislaby_kotatko.repo
@@ -31,7 +31,7 @@
     not repo_home_jirislaby_kotatko.stat.exists
   zypper_repository:
     state: present
-    repo: "https://download.opensuse.org/repositories/home:jirislaby:kotatko/{{ ansible_facts['distribution_version'] }}/home:jirislaby:kotatko.repo"
+    repo: "https://download.opensuse.org/repositories/home:jirislaby:kotatko/${releasever}/home:jirislaby:kotatko.repo"
 
 - name: Import repo keys and refresh
   command: zypper --gpg-auto-import-keys refresh
