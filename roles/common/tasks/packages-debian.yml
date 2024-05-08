@@ -5,4 +5,4 @@
 - name: "Install required packages"
   apt:
     state: present
-    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'docker-compose', 'ncdu', 'compsize', 'git', 'wireguard']
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'docker-compose', 'ncdu', 'btrfs-compsize', 'git', 'wireguard', 'flatpak']
