@@ -6,3 +6,10 @@
   apt:
     state: present
     name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'docker-compose', 'ncdu', 'btrfs-compsize', 'git', 'wireguard', 'flatpak']
+
+- name: "Add flathub repo in flatpak"
+  become: yes
+  flatpak:
+    name: https://flathub.org/repo/flathub.flatpakrepo
+    method: system
+    state: present
