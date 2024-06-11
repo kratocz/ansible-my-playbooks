@@ -5,7 +5,7 @@
 - name: "Install required packages"
   apt:
     state: present
-    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'ncdu', 'btrfs-compsize', 'git', 'wireguard', 'flatpak', 'iotop']
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'ncdu', 'btrfs-compsize', 'git', 'wireguard', 'flatpak', 'iotop', 'rclone']
 
 - name: "Add flathub repo in flatpak"
   community.general.flatpak_remote:
