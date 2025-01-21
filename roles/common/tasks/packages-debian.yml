@@ -1,3 +1,20 @@
+- name: Download and dearmor HashiCorp GPG key
+  ansible.builtin.get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /tmp/hashicorp.gpg
+    mode: '0644'
+
+- name: Convert GPG key to keyring format
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg /tmp/hashicorp.gpg
+    creates: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+- name: Add HashiCorp repository
+  ansible.builtin.copy:
+    content: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    dest: /etc/apt/sources.list.d/hashicorp.list
+    mode: '0644'
+
 - name: "Update apt package cache"
   apt:
     update_cache: yes
@@ -5,7 +22,7 @@
 - name: "Install required packages"
   apt:
     state: present
-    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'ncdu', 'btrfs-compsize', 'git', 'wireguard', 'flatpak', 'iotop', 'rclone', 'nodejs']
+    name: ['ansible', 'mc', 'vim', 'tmux', 'docker.io', 'ncdu', 'btrfs-compsize', 'git', 'wireguard', 'flatpak', 'iotop', 'rclone', 'nodejs', 'terraform']
 
 - name: "Add flathub repo in flatpak"
   community.general.flatpak_remote:
